@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
-		"github.com/geekmdio/noted/third_party/ehrproto"
+		"github.com/geekmdio/noted/pkg/ehrproto"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
