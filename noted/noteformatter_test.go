@@ -45,11 +45,14 @@ func TestNoteFormatter(t *testing.T) {
 	asthmaFragBuilder := NoteFragmentBuilder{}
 	asthmaFragBuilder.InitFromNote(note)
 	asthma := asthmaFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ASTHMA).Build()
-	cad := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).Build()
+
+	cadFragBuilder := NoteFragmentBuilder{}
+	cadFragBuilder.InitFromNote(note)
+	cad := cadFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).Build()
 
 	note.Fragments = append(note.Fragments, vit, all, meds, subjFrag, cad, asthma, mhx, fam, soc, pe)
 
-	NoteFormatter(note)
+	_ = NoteFormatter(note)
 
 	fmt.Println(note)
 }
