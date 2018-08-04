@@ -6,8 +6,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
-	"fmt"
-	"github.com/geekmdio/noted/src/ehrproto"
+		"github.com/geekmdio/noted/src/ehrproto"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
@@ -44,8 +43,6 @@ func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
 	b := create.NoteBuilder{}
 	now := timestamp.Timestamp{Seconds:time.Now().Unix()}
 	note := b.Init().SetDateCreated(&now).Build()
-
-	fmt.Println(now.Seconds)
 
 	// Test made in Aug 2018, therefore the value for seconds since UNIX epoch
 	// must be greater than January 2018, which is about 40 years.

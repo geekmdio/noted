@@ -8,7 +8,9 @@ before_install:
 - go get -t -v ./...
 
 script:
-- go test -v ./test/... -race -coverprofile=coverage.txt -covermode=atomic
+- go test -v -coverpkg ./... ./... -race -coverprofile=tmp.txt -covermode=atomic
+- cat tmp.txt | grep -v "github.com/geekmdio/noted/src/ehrproto/" > coverage.txt
+- rm tmp.txt
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
