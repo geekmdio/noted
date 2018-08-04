@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/geekmdio/noted/pkg/create"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/third_party/ehrproto"
+	"github.com/geekmdio/noted/pkg/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
 )

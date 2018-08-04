@@ -1,7 +1,7 @@
 package create
 
 import (
-	"github.com/geekmdio/noted/third_party/ehrproto"
+	"github.com/geekmdio/noted/pkg/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 )
 
