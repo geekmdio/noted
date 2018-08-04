@@ -1,10 +1,10 @@
-package main
+package examples
 
 import (
 	"fmt"
-	"github.com/geekmdio/noted/src/create"
+	"github.com/geekmdio/noted/pkg/create"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/src/ehrproto"
+	"github.com/geekmdio/noted/third_party/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
 )

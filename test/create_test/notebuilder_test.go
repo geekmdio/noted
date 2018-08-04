@@ -2,11 +2,11 @@ package create_test
 
 import (
 	"testing"
-	"github.com/geekmdio/noted/src/create"
+	"github.com/geekmdio/noted/pkg/create"
 	"github.com/google/uuid"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
-		"github.com/geekmdio/noted/src/ehrproto"
+		"github.com/geekmdio/noted/third_party/ehrproto"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {

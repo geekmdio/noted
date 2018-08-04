@@ -2,7 +2,7 @@ package create_test
 
 import (
 	"testing"
-	"github.com/geekmdio/noted/src/create"
+	"github.com/geekmdio/noted/pkg/create"
 	"github.com/google/uuid"
 )
 
