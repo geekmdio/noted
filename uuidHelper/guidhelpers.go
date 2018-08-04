@@ -3,7 +3,7 @@ package uuidHelper
 import (
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
-	"github.com/geekmdio/noted/pkg/logHelper"
+	"github.com/geekmdio/noted/logHelper"
 )
 
 func GenerateGuidString() string {

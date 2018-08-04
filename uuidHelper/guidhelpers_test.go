@@ -1,13 +1,12 @@
-package create_test
+package uuidHelper
 
 import (
 	"testing"
 		"github.com/google/uuid"
-	"github.com/geekmdio/noted/pkg/uuidHelper"
 )
 
 func TestGenerateGuidStringCanBeParsedAsUuid(t *testing.T) {
-	myGuidString := uuidHelper.GenerateGuidString()
+	myGuidString := GenerateGuidString()
 	_, err := uuid.Parse(myGuidString)
 	if err != nil {
 		t.Errorf("There was an error processing the guid and it is likely bad: %f", err)
@@ -15,7 +14,7 @@ func TestGenerateGuidStringCanBeParsedAsUuid(t *testing.T) {
 }
 
 func TestGenerateGuidStringWhenParsedReturnsSameValue(t *testing.T) {
-	myGuidString := uuidHelper.GenerateGuidString()
+	myGuidString := GenerateGuidString()
 	uuid, _ := uuid.Parse(myGuidString)
 	same := uuid.String() == myGuidString
 	if !same {
@@ -24,7 +23,7 @@ func TestGenerateGuidStringWhenParsedReturnsSameValue(t *testing.T) {
 }
 
 func TestGenerateGuidThrowingAnError(t *testing.T) {
-	myGuidString := uuidHelper.XXX_GenerateGuidStringThrowsError()
+	myGuidString := XXX_GenerateGuidStringThrowsError()
 	uuid, _ := uuid.Parse(myGuidString)
 	same := uuid.String() == myGuidString
 	if !same {

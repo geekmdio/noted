@@ -1,17 +1,16 @@
-package create_test
+package create
 
 import (
 	"testing"
-	"github.com/geekmdio/noted/pkg/create"
 	"github.com/google/uuid"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
-		"github.com/geekmdio/noted/pkg/ehrproto"
-	"github.com/geekmdio/noted/pkg/uuidHelper"
+		"github.com/geekmdio/noted/ehrproto"
+	"github.com/geekmdio/noted/uuidHelper"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	note := b.Init().Build()
 
 	_, err := uuid.Parse(note.NoteGuid)
@@ -22,7 +21,7 @@ func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
 }
 
 func TestNoteBuilderInitCreatesNewNoteFragmentSliceWithZeroLength(t *testing.T) {
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	note := b.Init().Build()
 
 	if note.Fragments == nil || len(note.Fragments) != 0 {
@@ -31,7 +30,7 @@ func TestNoteBuilderInitCreatesNewNoteFragmentSliceWithZeroLength(t *testing.T) 
 }
 
 func TestNoteBuilderSetIdSetsProperFieldAndReturnsProperValue(t *testing.T) {
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	var id int32 = 43
 	note := b.Init().SetId(id).Build()
 
@@ -41,7 +40,7 @@ func TestNoteBuilderSetIdSetsProperFieldAndReturnsProperValue(t *testing.T) {
 }
 
 func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	now := timestamp.Timestamp{Seconds:time.Now().Unix()}
 	note := b.Init().SetDateCreated(&now).Build()
 
@@ -59,7 +58,7 @@ func TestSetXGuidSetsProperFields(t *testing.T) {
 	authorGuid := uuidHelper.GenerateGuidString()
 	patientGuid := uuidHelper.GenerateGuidString()
 
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	note := b.Init().
 		SetVisitGuid(visitGuid).
 		SetAuthorGuid(authorGuid).
@@ -76,7 +75,7 @@ func TestSetXGuidSetsProperFields(t *testing.T) {
 }
 
 func TestSetTypeSetsTypeProperly(t *testing.T) {
-	b := create.NoteBuilder{}
+	b := NoteBuilder{}
 	note := b.Init().
 		SetType(ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION).
 		Build()

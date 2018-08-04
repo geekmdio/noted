@@ -1,9 +1,9 @@
 package create
 
 import (
-	"github.com/geekmdio/noted/pkg/ehrproto"
+	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/pkg/uuidHelper"
+	"github.com/geekmdio/noted/uuidHelper"
 )
 
 type NoteBuilder struct {

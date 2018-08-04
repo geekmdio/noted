@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/geekmdio/noted/pkg/create"
+	"github.com/geekmdio/noted/create"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/pkg/ehrproto"
+	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
-	"github.com/geekmdio/noted/pkg/uuidHelper"
+	"github.com/geekmdio/noted/uuidHelper"
 )
 
 func main() {

@@ -1,14 +1,13 @@
-package create_test
+package create
 
 import (
 	"testing"
-	"github.com/geekmdio/noted/pkg/create"
-	"github.com/geekmdio/noted/pkg/ehrproto"
+	"github.com/geekmdio/noted/ehrproto"
 )
 
 func TestInitFromNoteReturnsObject(t *testing.T) {
-	nb := create.NoteBuilder{}
-	nfb := create.NoteFragmentBuilder{}
+	nb := NoteBuilder{}
+	nfb := NoteFragmentBuilder{}
 	n := nb.Init().Build()
 	nf := nfb.InitFromNote(n).Build()
 
@@ -21,7 +20,7 @@ func TestInitFromNoteReturnsObject(t *testing.T) {
 
 func TestSetIdProperlySetsId(t *testing.T) {
 	var id int32 = 3
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetId(id).Build()
 
 	if nf.GetId() != id {
@@ -31,7 +30,7 @@ func TestSetIdProperlySetsId(t *testing.T) {
 
 func TestSetIssueProperlySetsIssue(t *testing.T) {
 	issue := ehrpb.MedicalIssue_ASTHMA
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssue(issue).Build()
 
 	if nf.GetIssue() != issue {
@@ -41,7 +40,7 @@ func TestSetIssueProperlySetsIssue(t *testing.T) {
 
 func TestSetIcd10CodeProperlySetsIcd10Code(t *testing.T) {
 	icd10Code := "Z.011"
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIcd10Code(icd10Code).Build()
 
 	if nf.GetIcd_10Code() != icd10Code {
@@ -51,7 +50,7 @@ func TestSetIcd10CodeProperlySetsIcd10Code(t *testing.T) {
 
 func TestSetStatusProperlySetsStatus(t *testing.T) {
 	status := ehrpb.NoteFragmentStatus_REPLACED
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetStatus(status).Build()
 
 	if nf.GetStatus() != status {
@@ -61,7 +60,7 @@ func TestSetStatusProperlySetsStatus(t *testing.T) {
 
 func TestSetPriorityProperlySetsPriority(t *testing.T) {
 	priority := ehrpb.FragmentPriority_HIGH
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetPriority(priority).Build()
 
 	if nf.GetPriority() != priority {
@@ -71,7 +70,7 @@ func TestSetPriorityProperlySetsPriority(t *testing.T) {
 
 func TestSetTopicProperlySetsTopic(t *testing.T) {
 	topic := ehrpb.FragmentTopic_ALLERGIES
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetTopic(topic).Build()
 
 	if nf.GetTopic() != topic {
@@ -81,7 +80,7 @@ func TestSetTopicProperlySetsTopic(t *testing.T) {
 
 func TestSetMarkdownContentProperlySetsMarkdownContent(t *testing.T) {
 	mdContent := "# Heading1"
-	nfb := create.NoteFragmentBuilder{}
+	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetMarkdownContent(mdContent).Build()
 
 	if nf.GetMarkdownContent() != mdContent {
