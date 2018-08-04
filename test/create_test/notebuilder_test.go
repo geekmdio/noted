@@ -7,6 +7,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
 	"fmt"
+	"github.com/geekmdio/noted/src/ehrproto"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
@@ -73,5 +74,16 @@ func TestSetXGuidSetsProperFields(t *testing.T) {
 
 	if !fieldsSetProperly {
 		t.Errorf("One or more of the fields containing Guid's were improperly set.")
+	}
+}
+
+func TestSetTypeSetsTypeProperly(t *testing.T) {
+	b := create.NoteBuilder{}
+	note := b.Init().
+		SetType(ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION).
+		Build()
+
+	if note.GetType() != ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION {
+		t.Errorf("The note types do not match up and there is likely an error.")
 	}
 }
