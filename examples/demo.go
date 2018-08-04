@@ -1,4 +1,4 @@
-package examples
+package main
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	fmt.Println("This will be a demo soon...")
+	fmt.Println("Building a note.")
 	noteBuilder := create.NoteBuilder{}
 	note := noteBuilder.
 		Init().
@@ -22,6 +22,7 @@ func main() {
 		SetVisitGuid(create.GenerateGuidString()).
 		Build()
 
+	fmt.Println("Building a note fragment for asthma.")
 	fragBuilder := create.NoteFragmentBuilder{}
 	asthmaFrag := fragBuilder.
 		InitFromNote(note).
@@ -35,6 +36,7 @@ func main() {
 		SetMarkdownContent("#Asthma\nSub-title\n##Heading2\nSub-title").
 		Build()
 
+	fmt.Println("Building a note fragment for ischemic CAD")
 	cadFrag := fragBuilder.
 		InitFromNote(note).
 		SetId(0).
@@ -47,15 +49,20 @@ func main() {
 		SetMarkdownContent("#Coronary Artery Disease\nSub-title\n##Heading2\nSub-title").
 		Build()
 
+	fmt.Println("Appending the fragments to the note")
 	note.Fragments = append(note.Fragments, asthmaFrag, cadFrag)
 
+	fmt.Println("Marshaling the message into a protobuf byte stream.")
 	bytes, err := proto.Marshal(note)
 	if err != nil {
 		log.Fatalf("Error creating binary from note: %v", err)
 	}
+	fmt.Println("Printing the protobuf byte stream.")
 	fmt.Println(bytes)
 
+	fmt.Println("Unmarshaling the byte stream")
 	myReceivedNote := ehrpb.Note{}
 	proto.Unmarshal(bytes, &myReceivedNote)
+	fmt.Println("Printing the note")
 	fmt.Println(myReceivedNote)
 }
