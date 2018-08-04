@@ -50,7 +50,28 @@ func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
 	// must be greater than January 2018, which is about 40 years.
 	// 40 yr after UNIX epoch * 365 day/yr * 24 hrs/day * 60 min/hr * 60 sec/min
 	var jan2018 int64 = 1261440000
-	if note.DateCreated.Seconds <= jan2018 {
+	if note.GetDateCreated().Seconds <= jan2018 {
 		t.Errorf("Time for date created is less than or equal to zero; it was not properly set.")
+	}
+}
+
+func TestSetXGuidSetsProperFields(t *testing.T) {
+	visitGuid := create.GenerateGuidString()
+	authorGuid := create.GenerateGuidString()
+	patientGuid := create.GenerateGuidString()
+
+	b := create.NoteBuilder{}
+	note := b.Init().
+		SetVisitGuid(visitGuid).
+		SetAuthorGuid(authorGuid).
+		SetPatientGuid(patientGuid).
+		Build()
+
+	fieldsSetProperly := note.GetVisitGuid() == visitGuid &&
+						note.GetAuthorGuid() == authorGuid &&
+						note.GetPatientGuid() == patientGuid
+
+	if !fieldsSetProperly {
+		t.Errorf("One or more of the fields containing Guid's were improperly set.")
 	}
 }
