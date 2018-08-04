@@ -3,6 +3,7 @@ package create
 import (
 	"github.com/geekmdio/noted/pkg/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/geekmdio/noted/pkg/uuidHelper"
 )
 
 type NoteFragmentBuilder struct {
@@ -15,7 +16,7 @@ func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuild
 	nb.noteFragment.NoteGuid = note.NoteGuid
 	nb.noteFragment.AuthorGuid = note.AuthorGuid
 	nb.noteFragment.PatientGuid = note.PatientGuid
-	nb.noteFragment.NoteFragmentGuid = GenerateGuidString()
+	nb.noteFragment.NoteFragmentGuid = uuidHelper.GenerateGuidString()
 	return nb
 }
 
