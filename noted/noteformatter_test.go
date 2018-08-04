@@ -30,11 +30,21 @@ func TestNoteFormatter(t *testing.T) {
 	famFragBuilder.InitFromNote(note)
 	fam := famFragBuilder.SetTopic(ehrpb.FragmentTopic_FAMILY_HISTORY).Build()
 
+	socFragBuilder := NoteFragmentBuilder{}
+	socFragBuilder.InitFromNote(note)
+	soc := socFragBuilder.SetTopic(ehrpb.FragmentTopic_SOCIAL_HISTORY).Build()
 
-	soc := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_SOCIAL_HISTORY).Build()
-	vit := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_VITALS).Build()
-	pe := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_PHYSICAL_EXAM).Build()
-	asthma := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ASTHMA).Build()
+	vitFragBuilder := NoteFragmentBuilder{}
+	vitFragBuilder.InitFromNote(note)
+	vit := vitFragBuilder.SetTopic(ehrpb.FragmentTopic_VITALS).Build()
+
+	peFragBuilder := NoteFragmentBuilder{}
+	peFragBuilder.InitFromNote(note)
+	pe := peFragBuilder.SetTopic(ehrpb.FragmentTopic_PHYSICAL_EXAM).Build()
+
+	asthmaFragBuilder := NoteFragmentBuilder{}
+	asthmaFragBuilder.InitFromNote(note)
+	asthma := asthmaFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ASTHMA).Build()
 	cad := subjFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).Build()
 
 	note.Fragments = append(note.Fragments, vit, all, meds, subjFrag, cad, asthma, mhx, fam, soc, pe)
