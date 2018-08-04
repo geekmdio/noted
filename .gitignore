@@ -3,3 +3,6 @@ dst/
 
 #IDE
 .idea/
+
+#Code Coverage
+coverage.txt
