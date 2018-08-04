@@ -1,4 +1,4 @@
-package create
+package noted
 
 import (
 	"github.com/geekmdio/noted/ehrproto"

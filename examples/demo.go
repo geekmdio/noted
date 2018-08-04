@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/geekmdio/noted/create"
+	"github.com/geekmdio/noted/noted"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	noteBuilder := create.NoteBuilder{}
+	noteBuilder := noted.NoteBuilder{}
 	note := noteBuilder.
 		Init().
 		SetAuthorGuid(uuidHelper.GenerateGuidString()).
@@ -23,7 +23,7 @@ func main() {
 		SetVisitGuid(uuidHelper.GenerateGuidString()).
 		Build()
 
-	fragBuilder := create.NoteFragmentBuilder{}
+	fragBuilder := noted.NoteFragmentBuilder{}
 	asthmaFrag := fragBuilder.
 		InitFromNote(note).
 		SetId(0).
