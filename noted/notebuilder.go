@@ -1,3 +1,19 @@
+// Noted is a simple, no-nonsense solution to creating structured
+// clinical notes. It breaks notes down into their essential elements,
+// making them more easily searchable and customizable for the user.
+// It is built upon Google's protobuf technology, and therefore
+// is a ready-to-go solution for anything from simple, plain-text REST solutions
+// to binary, bidirectional streaming RPC's.
+//
+// The process is simple. While you can access the relevant protobuf generated
+// classes directly, there is a much easier to use fluent builder syntax
+// for constructing notes.
+//
+// Step 1: Build a note with a NoteBuilder
+// Step 2: Build one or more NoteFragment's with a NoteFragmentBuilder
+// Step 3: Organize the Note into a structure consistent with what you
+// would see in most clinical notes by running the NoteFormatter on the note
+// Step 4: This part is up to you. Your object is ready to go.
 package noted
 
 import (
