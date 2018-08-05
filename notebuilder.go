@@ -20,8 +20,7 @@ import (
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/google/uuid"
-	"log"
-)
+	)
 
 
 // NoteBuilder allows for a fluent means of constructing complex objects.
@@ -41,11 +40,7 @@ type NoteBuilder struct {
 func (nb *NoteBuilder) Init() *NoteBuilder {
 	nb.note = &ehrpb.Note{}
 	nb.note.Fragments = []*ehrpb.NoteFragment{}
-	uuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making new UUID: %v", err)
-	}
-	nb.note.NoteGuid = uuid.String()
+	nb.note.NoteGuid = uuid.New().String()
 	return nb
 }
 

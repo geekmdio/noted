@@ -41,27 +41,15 @@ func main() {
 }
 
 func buildNote() *ehrpb.Note {
-	authorUuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
-	patientGuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
-	visitUuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
 	noteBuilder := noted.NoteBuilder{}
 	note := noteBuilder.
 		Init().
-		SetAuthorGuid(authorUuid.String()).
+		SetAuthorGuid(uuid.New().String()).
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetId(0).
-		SetPatientGuid(patientGuid.String()).
+		SetPatientGuid(uuid.New().String()).
 		SetType(ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION).
-		SetVisitGuid(visitUuid.String()).
+		SetVisitGuid(uuid.New().String()).
 		Build()
 	return note
 }
