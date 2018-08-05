@@ -6,8 +6,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
 	"github.com/geekmdio/noted/ehrproto"
-	"log"
-)
+	)
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
 	b := NoteBuilder{}
@@ -54,34 +53,25 @@ func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
 }
 
 func TestSetXGuidSetsProperFields(t *testing.T) {
-	newUuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
-	visitGuid := newUuid
-	newUuid, err = uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
-	authorGuid := newUuid
-	newUuid, err = uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
-	}
-	patientGuid := newUuid
-
+	visGuid := uuid.New().String()
+	authGuid := uuid.New().String()
+	ptGuid := uuid.New().String()
 	b := NoteBuilder{}
 	note := b.Init().
-		SetVisitGuid(visitGuid.String()).
-		SetAuthorGuid(authorGuid.String()).
-		SetPatientGuid(patientGuid.String()).
+		SetVisitGuid(visGuid).
+		SetAuthorGuid(authGuid).
+		SetPatientGuid(ptGuid).
 		Build()
 
-	fieldsSetProperly := note.GetVisitGuid() == visitGuid.String() &&
-						note.GetAuthorGuid() == authorGuid.String() &&
-						note.GetPatientGuid() == patientGuid.String()
+	_, vistGuidErr := uuid.Parse(note.GetVisitGuid())
+	_, authGuidErr := uuid.Parse(note.GetAuthorGuid())
+	_, ptGuidErr := uuid.Parse(note.GetPatientGuid())
 
-	if !fieldsSetProperly {
+	fieldsAreGuids := vistGuidErr == nil && authGuidErr == nil && ptGuidErr == nil
+
+	fieldsSetProperly := note.GetVisitGuid() == visGuid && note.GetAuthorGuid() == authGuid && note.GetPatientGuid() == ptGuid
+
+	if !fieldsAreGuids || !fieldsSetProperly {
 		t.Errorf("One or more of the fields containing Guid's were improperly set.")
 	}
 }
