@@ -19,7 +19,7 @@ func main() {
 
 	buildNoteFragments(note)
 
-	fmtErr := noted.NoteFormatter(note)
+	fmtErr := noted.OrganizeNoteFragments(note)
 	if fmtErr != nil {
 		log.Fatalf("Error formatting the note: %f", fmtErr)
 	}

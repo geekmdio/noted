@@ -12,7 +12,7 @@
 // Step 1: Build a note with a NoteBuilder
 // Step 2: Build one or more NoteFragment's with a NoteFragmentBuilder
 // Step 3: Organize the Note into a structure consistent with what you
-// would see in most clinical notes by running the NoteFormatter on the note
+// would see in most clinical notes by running the OrganizeNoteFragments on the note
 // Step 4: This part is up to you. Your object is ready to go.
 package noted
 

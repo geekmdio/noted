@@ -13,7 +13,7 @@ func (n noteFormatterError) Error() string {
 	return n.Message
 }
 
-// NoteFormatter is required to resolve the inherent problem that comes with NoteFragment
+// OrganizeNoteFragments is required to resolve the inherent problem that comes with NoteFragment
 // objects. NoteFragment's are stored in a Note as a slice of NoteFragment pointers,
 // and the entire body of a note is included in these NoteFragments. As such, there is
 // nothing stopping people from putting together notes in wildly different arrangements.
@@ -26,9 +26,9 @@ func (n noteFormatterError) Error() string {
 // - Vital Signs
 // - Physical Exam
 // - Medical Problems, sorted by priority along with a plan.
-// NoteFormatter uses the enumerated values of the FragmentTopic type, which are sorted
+// OrganizeNoteFragments uses the enumerated values of the FragmentTopic type, which are sorted
 // in order to achieve this structure.
-func NoteFormatter(n *ehrpb.Note) error {
+func OrganizeNoteFragments(n *ehrpb.Note) error {
 
 	if len(n.Fragments) <= 0 {
 		return noteFormatterError{ Message: "The note does not have any fragments to sort."}
