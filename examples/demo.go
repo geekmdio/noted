@@ -1,7 +1,7 @@
 package main
 
 import (
-		"github.com/geekmdio/noted/noted"
+		"github.com/geekmdio/noted"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
