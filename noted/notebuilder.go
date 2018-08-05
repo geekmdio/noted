@@ -13,7 +13,6 @@ import (
 // a GUID for the note. The NoteBuilder must be initialized, then the
 // resulting object can call Init first, Build last, and any other
 // functions in between to build up the object.
-// RETURNS: *NoteBuilder
 type NoteBuilder struct {
 	note *ehrpb.Note
 }
