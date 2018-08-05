@@ -87,8 +87,8 @@ func (nb *NoteFragmentBuilder) SetPriority(p ehrpb.FragmentPriority) *NoteFragme
 }
 
 // A NoteFragment will have a topic which allows for structuring of the
-// Note, currently through NoteFormatter. The following fragment types exist
-// and, through NoteFormatter, will be ordered in the below order.
+// Note, currently through OrganizeNoteFragments. The following fragment types exist
+// and, through OrganizeNoteFragments, will be ordered in the below order.
 // - Subjective Information
 // - Medical History
 // - Medical Allergies

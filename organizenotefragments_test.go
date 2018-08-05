@@ -5,13 +5,13 @@ import (
 	"github.com/geekmdio/ehrprotorepo/goproto"
 	)
 
-func TestNoteFormatter(t *testing.T) {
+func TestOrganizeNoteFragments(t *testing.T) {
 	nb := NoteBuilder{}
 	note := nb.Init().Build()
 
 	buildAppendNoteFrags(note)
 
-	_ = NoteFormatter(note)
+	_ = OrganizeNoteFragments(note)
 
 	firstTopic := note.Fragments[0].Topic
 	expectedFirstTopic := ehrpb.FragmentTopic(1) // 0 is reserved so index starts at 1
@@ -21,11 +21,11 @@ func TestNoteFormatter(t *testing.T) {
 	}
 }
 
-func TestNoteFormatterError_Error(t *testing.T) {
+func TestOrganizeNoteFragmentsError_Error(t *testing.T) {
 	nb := NoteBuilder{}
 	note := nb.Init().Build()
 
-	err := NoteFormatter(note)
+	err := OrganizeNoteFragments(note)
 
 	if err == nil {
 		t.Errorf("An error should have been thrown!")
