@@ -19,7 +19,8 @@ package noted
 import (
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/guidHelper"
+	"github.com/google/uuid"
+	"log"
 )
 
 
@@ -39,8 +40,12 @@ type NoteBuilder struct {
 // RETURNS: *NoteBuilder
 func (nb *NoteBuilder) Init() *NoteBuilder {
 	nb.note = &ehrpb.Note{}
-	nb.note.NoteGuid = guidHelper.GenerateGuidString()
 	nb.note.Fragments = []*ehrpb.NoteFragment{}
+	uuid, err := uuid.NewUUID()
+	if err != nil {
+		log.Fatalf("Error making new UUID: %v", err)
+	}
+	nb.note.NoteGuid = uuid.String()
 	return nb
 }
 
