@@ -3,6 +3,8 @@ package noted
 import (
 	"testing"
 	"github.com/geekmdio/noted/ehrproto"
+	"github.com/golang/protobuf/ptypes/timestamp"
+	"time"
 )
 
 func TestNoteBuilder_Init(t *testing.T) {
@@ -85,5 +87,15 @@ func TestNoteFragmentBuilder_SetMarkdownContent(t *testing.T) {
 
 	if nf.GetMarkdownContent() != mdContent {
 		t.Errorf("Expected %v, but got %v", mdContent, nf.GetMarkdownContent())
+	}
+}
+
+func TestNoteFragmentBuilder_SetDateCreated(t *testing.T) {
+	dateCreated := timestamp.Timestamp{ Seconds: time.Now().Unix() }
+	nfb := NoteFragmentBuilder{}
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetDateCreated(&dateCreated).Build()
+
+	if nf.GetDateCreated().Seconds != dateCreated.Seconds {
+		t.Errorf("Expected %v, but got %v", dateCreated, nf.GetTopic())
 	}
 }

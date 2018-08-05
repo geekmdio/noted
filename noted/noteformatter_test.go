@@ -76,4 +76,8 @@ func TestNoteFormatterError_Error(t *testing.T) {
 		t.Errorf("Should have type asserted to error interface")
 	}
 
+	if nfe.Error() != nfe.Message {
+		t.Error("Error should be returning message")
+	}
+
 }
