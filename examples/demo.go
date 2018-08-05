@@ -1,15 +1,15 @@
 package main
 
 import (
-		"github.com/geekmdio/noted"
+	"github.com/geekmdio/noted"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
 	"github.com/google/uuid"
 	"github.com/golang/protobuf/jsonpb"
 	"os"
 	"fmt"
+	"github.com/geekmdio/ehrprotorepo/goproto"
 )
 // This is a demo of how to use the GeekMD Noted library to
 // build and up format a note.

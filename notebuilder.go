@@ -17,7 +17,7 @@
 package noted
 
 import (
-	"github.com/geekmdio/noted/ehrproto"
+	"github.com/geekmdio/ehrprotorepo/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/google/uuid"
 	)

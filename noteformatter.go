@@ -1,9 +1,9 @@
 package noted
 
 import (
-	"github.com/geekmdio/noted/ehrproto"
 	"sort"
-	)
+	"github.com/geekmdio/ehrprotorepo/goproto"
+)
 
 type noteFormatterError struct {
 	Message string
