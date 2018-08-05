@@ -5,18 +5,33 @@ import (
 	"sort"
 	)
 
-type NoteFormatterError struct {
+type noteFormatterError struct {
 	Message string
 }
 
-func (n NoteFormatterError) Error() string {
+func (n noteFormatterError) Error() string {
 	return n.Message
 }
 
+// NoteFormatter is required to resolve the inherent problem that comes with NoteFragment
+// objects. NoteFragment's are stored in a Note as a slice of NoteFragment pointers,
+// and the entire body of a note is included in these NoteFragments. As such, there is
+// nothing stopping people from putting together notes in wildly different arrangements.
+// A medical note generally follows the following format:
+// - Subjective Information
+// - Medical History
+// - Medical Allergies
+// - Family (Genetic) History
+// - Social History
+// - Vital Signs
+// - Physical Exam
+// - Medical Problems, sorted by priority along with a plan.
+// NoteFormatter uses the enumerated values of the FragmentTopic type, which are sorted
+// in order to achieve this structure.
 func NoteFormatter(n *ehrpb.Note) error {
 
 	if len(n.Fragments) <= 0 {
-		return NoteFormatterError{ Message: "The note does not have any fragments to sort."}
+		return noteFormatterError{ Message: "The note does not have any fragments to sort."}
 	}
 
 	newFragments := generateNewFragmentsProperlyOrdered(n)

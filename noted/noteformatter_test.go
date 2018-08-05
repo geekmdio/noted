@@ -70,7 +70,7 @@ func TestNoteFormatterError_Error(t *testing.T) {
 		t.Errorf("An error should have been thrown!")
 	}
 
-	nfe := NoteFormatterError{ Message: "Test"}
+	nfe := noteFormatterError{ Message: "Test"}
 	_, ok := error(nfe).(error)
 	if !ok {
 		t.Errorf("Should have type asserted to error interface")

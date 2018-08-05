@@ -11,15 +11,21 @@ func GenerateGuidString() string {
 }
 
 // Do not use. This is only for testing purposes.
-func XXX_GenerateGuidStringThrowsError() string {
+func generateGuidStringThrowsError() string {
 	return generateGuidString(true)
 }
 
 func generateGuidString(throwError bool) string {
 	uuid, err := uuid.NewUUID()
-	if err != nil || !throwError {
+	if throwError {
+		f := logHelper.GenerateLogFields("GenerateGuidString", "GUID", "Directive to throw error.", err)
+		log.WithFields(f).Error("This is an intentional error that should only arise in testing cases.")
+		return ""
+	}
+	if err != nil {
 		f := logHelper.GenerateLogFields("GenerateGuidString", "GUID", uuid.String(), err)
 		log.WithFields(f).Error("Unable to generate a GUID.")
+		return ""
 	}
 	return uuid.String()
 }
