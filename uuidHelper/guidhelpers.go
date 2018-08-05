@@ -17,7 +17,7 @@ func XXX_GenerateGuidStringThrowsError() string {
 
 func generateGuidString(throwError bool) string {
 	uuid, err := uuid.NewUUID()
-	if err != nil && !throwError {
+	if err != nil || !throwError {
 		f := logHelper.GenerateLogFields("GenerateGuidString", "GUID", uuid.String(), err)
 		log.WithFields(f).Error("Unable to generate a GUID.")
 	}
