@@ -3,8 +3,7 @@ package noted
 import (
 	"testing"
 	"github.com/geekmdio/noted/ehrproto"
-	"fmt"
-)
+	)
 
 func TestNoteFormatter(t *testing.T) {
 	nb := NoteBuilder{}
@@ -54,5 +53,27 @@ func TestNoteFormatter(t *testing.T) {
 
 	_ = NoteFormatter(note)
 
-	fmt.Println(note)
+	firstTopic := note.Fragments[0].Topic
+	expectedFirstTopic := ehrpb.FragmentTopic(1) // 0 is reserved so index starts at 1
+	if firstTopic != expectedFirstTopic {
+		t.Errorf("First topic should have been %v and was %v", firstTopic, expectedFirstTopic )
+	}
+}
+
+func TestNoteFormatterError_Error(t *testing.T) {
+	nb := NoteBuilder{}
+	note := nb.Init().Build()
+
+	err := NoteFormatter(note)
+
+	if err == nil {
+		t.Errorf("An error should have been thrown!")
+	}
+
+	nfe := NoteFormatterError{ Message: "Test"}
+	_, ok := error(nfe).(error)
+	if !ok {
+		t.Errorf("Should have type asserted to error interface")
+	}
+
 }
