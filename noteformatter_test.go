@@ -2,7 +2,7 @@ package noted
 
 import (
 	"testing"
-	"github.com/geekmdio/noted/ehrproto"
+	"github.com/geekmdio/ehrprotorepo/goproto"
 	)
 
 func TestNoteFormatter(t *testing.T) {
