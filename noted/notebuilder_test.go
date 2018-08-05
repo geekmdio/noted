@@ -6,7 +6,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
 		"github.com/geekmdio/noted/ehrproto"
-	"github.com/geekmdio/noted/uuidHelper"
+	"github.com/geekmdio/noted/guidHelper"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
@@ -54,9 +54,9 @@ func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
 }
 
 func TestSetXGuidSetsProperFields(t *testing.T) {
-	visitGuid := uuidHelper.GenerateGuidString()
-	authorGuid := uuidHelper.GenerateGuidString()
-	patientGuid := uuidHelper.GenerateGuidString()
+	visitGuid := guidHelper.GenerateGuidString()
+	authorGuid := guidHelper.GenerateGuidString()
+	patientGuid := guidHelper.GenerateGuidString()
 
 	b := NoteBuilder{}
 	note := b.Init().

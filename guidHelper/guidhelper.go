@@ -1,4 +1,4 @@
-package uuidHelper
+package guidHelper
 
 import (
 	"github.com/google/uuid"

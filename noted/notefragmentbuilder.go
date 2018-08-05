@@ -3,7 +3,7 @@ package noted
 import (
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/geekmdio/noted/uuidHelper"
+	"github.com/geekmdio/noted/guidHelper"
 )
 
 // NoteFragmentBuilder allows for a fluent means of constructing complex objects.
@@ -24,7 +24,7 @@ func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuild
 	nb.noteFragment.NoteGuid = note.NoteGuid
 	nb.noteFragment.AuthorGuid = note.AuthorGuid
 	nb.noteFragment.PatientGuid = note.PatientGuid
-	nb.noteFragment.NoteFragmentGuid = uuidHelper.GenerateGuidString()
+	nb.noteFragment.NoteFragmentGuid = guidHelper.GenerateGuidString()
 	return nb
 }
 

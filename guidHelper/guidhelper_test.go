@@ -1,11 +1,11 @@
-package uuidHelper
+package guidHelper
 
 import (
 	"testing"
 		"github.com/google/uuid"
 )
 
-func TestGenerateGuidStringCanBeParsedAsUuid(t *testing.T) {
+func TestGenerateGuidString_CanBeParsedAsUuid(t *testing.T) {
 	myGuidString := GenerateGuidString()
 	_, err := uuid.Parse(myGuidString)
 	if err != nil {
@@ -13,7 +13,7 @@ func TestGenerateGuidStringCanBeParsedAsUuid(t *testing.T) {
 	}
 }
 
-func TestGenerateGuidStringWhenParsedReturnsSameValue(t *testing.T) {
+func TestGenerateGuidString_WhenParsedReturnsSameValue(t *testing.T) {
 	myGuidString := GenerateGuidString()
 	uuid, _ := uuid.Parse(myGuidString)
 	same := uuid.String() == myGuidString
@@ -22,7 +22,7 @@ func TestGenerateGuidStringWhenParsedReturnsSameValue(t *testing.T) {
 	}
 }
 
-func TestGenerateGuidThrowingAnError(t *testing.T) {
+func TestGenerateGuidString_ThrowingAnError(t *testing.T) {
 	myGuidString := generateGuidStringThrowsError()
 	same := myGuidString == ""
 	if !same {

@@ -7,7 +7,7 @@ import (
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
-	"github.com/geekmdio/noted/uuidHelper"
+	"github.com/geekmdio/noted/guidHelper"
 )
 
 // This is a demo of how to use the GeekMD Noted library to
@@ -41,12 +41,12 @@ func buildNote() *ehrpb.Note {
 	noteBuilder := noted.NoteBuilder{}
 	note := noteBuilder.
 		Init().
-		SetAuthorGuid(uuidHelper.GenerateGuidString()).
+		SetAuthorGuid(guidHelper.GenerateGuidString()).
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetId(0).
-		SetPatientGuid(uuidHelper.GenerateGuidString()).
+		SetPatientGuid(guidHelper.GenerateGuidString()).
 		SetType(ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION).
-		SetVisitGuid(uuidHelper.GenerateGuidString()).
+		SetVisitGuid(guidHelper.GenerateGuidString()).
 		Build()
 	return note
 }
