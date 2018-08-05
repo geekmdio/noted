@@ -1,52 +1,67 @@
 package main
 
 import (
-	"fmt"
-	"github.com/geekmdio/noted/noted"
+		"github.com/geekmdio/noted/noted"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/geekmdio/noted/ehrproto"
 	"github.com/golang/protobuf/proto"
 	"log"
-	"github.com/geekmdio/noted/uuidHelper"
+	"github.com/google/uuid"
+	"github.com/golang/protobuf/jsonpb"
+	"os"
+	"fmt"
 )
-
 // This is a demo of how to use the GeekMD Noted library to
 // build and up format a note.
-func main() {
 
+func main() {
 	note := buildNote()
 
 	buildNoteFragments(note)
 
 	fmtErr := noted.NoteFormatter(note)
 	if fmtErr != nil {
-		log.Fatalf("Error formatting the note")
+		log.Fatalf("Error formatting the note: %f", fmtErr)
 	}
 
-	bytes, err := proto.Marshal(note)
-	if err != nil {
-		log.Fatalf("Error creating binary from note: %v", err)
+	bytes, marshalErr := proto.Marshal(note)
+	if marshalErr != nil {
+		log.Fatalf("Error creating binary from note: %v", marshalErr)
 	}
 
 	fmt.Println("Printing the protobuf encoded byte stream.")
 	fmt.Println(bytes)
 
-	myReceivedNote := ehrpb.Note{}
-	proto.Unmarshal(bytes, &myReceivedNote)
-	fmt.Println("Printing the decoded note")
-	fmt.Println(myReceivedNote)
+	myReceivedNote := &ehrpb.Note{}
+	proto.Unmarshal(bytes, myReceivedNote)
+
+	fmt.Println("Printing JSON-ified data.")
+	m := &jsonpb.Marshaler{}
+	m.Marshal(os.Stdout, myReceivedNote)
 }
 
 func buildNote() *ehrpb.Note {
+	authorUuid, err := uuid.NewUUID()
+	if err != nil {
+		log.Fatalf("Error making UUID: %v", err)
+	}
+	patientGuid, err := uuid.NewUUID()
+	if err != nil {
+		log.Fatalf("Error making UUID: %v", err)
+	}
+	visitUuid, err := uuid.NewUUID()
+	if err != nil {
+		log.Fatalf("Error making UUID: %v", err)
+	}
 	noteBuilder := noted.NoteBuilder{}
 	note := noteBuilder.
 		Init().
-		SetAuthorGuid(uuidHelper.GenerateGuidString()).
+		SetAuthorGuid(authorUuid.String()).
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetId(0).
-		SetPatientGuid(uuidHelper.GenerateGuidString()).
+		SetPatientGuid(patientGuid.String()).
 		SetType(ehrpb.NoteType_CONTINUED_CARE_DOCUMENTATION).
-		SetVisitGuid(uuidHelper.GenerateGuidString()).
+		SetVisitGuid(visitUuid.String()).
 		Build()
 	return note
 }
@@ -117,7 +132,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
 		SetTopic(ehrpb.FragmentTopic_SOCIAL_HISTORY).
-		SetMarkdownContent("120/83 mmHg").
+		SetMarkdownContent("Smokes, drinks, does drugs...").
 		Build()
 	familyFrag := fragBuilder.
 		InitFromNote(note).
@@ -128,7 +143,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
 		SetTopic(ehrpb.FragmentTopic_FAMILY_HISTORY).
-		SetMarkdownContent("120/83 mmHg").
+		SetMarkdownContent("Dad had 4V CABG at age 43").
 		Build()
 	medsFrag := fragBuilder.
 		InitFromNote(note).
@@ -139,7 +154,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
 		SetTopic(ehrpb.FragmentTopic_MEDICATIONS).
-		SetMarkdownContent("120/83 mmHg").
+		SetMarkdownContent("Amphetamine salts").
 		Build()
 	peFrag := fragBuilder.
 		InitFromNote(note).
@@ -150,7 +165,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
 		SetTopic(ehrpb.FragmentTopic_PHYSICAL_EXAM).
-		SetMarkdownContent("120/83 mmHg").
+		SetMarkdownContent("Normal exam").
 		Build()
 	note.Fragments = append(note.Fragments, asthmaFrag, cadFrag, subjectiveFrag, allergiesFrag, vitalsFrag, socialFrag, familyFrag, medsFrag, peFrag)
 }

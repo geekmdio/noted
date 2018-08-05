@@ -31,7 +31,7 @@ func TestNoteFragmentBuilder_SetId(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetIssue(t *testing.T) {
-	issue := ehrpb.MedicalIssue_ASTHMA
+	issue := ehrpb.MedicalIssue_CHOLECYSTITS
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssue(issue).Build()
 
