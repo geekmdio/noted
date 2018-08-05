@@ -1,4 +1,4 @@
-# GeekMD:Noted v0.1.0
+# GeekMD:Noted v0.1.1
 A library for creating and managing clinical notes.
 
 |Branch|Build Status|Coverage %|
