@@ -1,11 +1,13 @@
-package create
+package noted
 
 import (
 	"testing"
 	"github.com/geekmdio/noted/ehrproto"
+	"github.com/golang/protobuf/ptypes/timestamp"
+	"time"
 )
 
-func TestInitFromNoteReturnsObject(t *testing.T) {
+func TestNoteBuilder_Init(t *testing.T) {
 	nb := NoteBuilder{}
 	nfb := NoteFragmentBuilder{}
 	n := nb.Init().Build()
@@ -18,7 +20,7 @@ func TestInitFromNoteReturnsObject(t *testing.T) {
 	}
 }
 
-func TestSetIdProperlySetsId(t *testing.T) {
+func TestNoteFragmentBuilder_SetId(t *testing.T) {
 	var id int32 = 3
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetId(id).Build()
@@ -28,7 +30,7 @@ func TestSetIdProperlySetsId(t *testing.T) {
 	}
 }
 
-func TestSetIssueProperlySetsIssue(t *testing.T) {
+func TestNoteFragmentBuilder_SetIssue(t *testing.T) {
 	issue := ehrpb.MedicalIssue_ASTHMA
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssue(issue).Build()
@@ -38,7 +40,7 @@ func TestSetIssueProperlySetsIssue(t *testing.T) {
 	}
 }
 
-func TestSetIcd10CodeProperlySetsIcd10Code(t *testing.T) {
+func TestNoteFragmentBuilder_SetIcd10Code(t *testing.T) {
 	icd10Code := "Z.011"
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIcd10Code(icd10Code).Build()
@@ -48,7 +50,7 @@ func TestSetIcd10CodeProperlySetsIcd10Code(t *testing.T) {
 	}
 }
 
-func TestSetStatusProperlySetsStatus(t *testing.T) {
+func TestNoteFragmentBuilder_SetStatus(t *testing.T) {
 	status := ehrpb.NoteFragmentStatus_REPLACED
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetStatus(status).Build()
@@ -58,7 +60,7 @@ func TestSetStatusProperlySetsStatus(t *testing.T) {
 	}
 }
 
-func TestSetPriorityProperlySetsPriority(t *testing.T) {
+func TestNoteFragmentBuilder_SetPriority(t *testing.T) {
 	priority := ehrpb.FragmentPriority_HIGH
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetPriority(priority).Build()
@@ -68,7 +70,7 @@ func TestSetPriorityProperlySetsPriority(t *testing.T) {
 	}
 }
 
-func TestSetTopicProperlySetsTopic(t *testing.T) {
+func TestNoteFragmentBuilder_SetTopic(t *testing.T) {
 	topic := ehrpb.FragmentTopic_ALLERGIES
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetTopic(topic).Build()
@@ -78,12 +80,22 @@ func TestSetTopicProperlySetsTopic(t *testing.T) {
 	}
 }
 
-func TestSetMarkdownContentProperlySetsMarkdownContent(t *testing.T) {
+func TestNoteFragmentBuilder_SetMarkdownContent(t *testing.T) {
 	mdContent := "# Heading1"
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetMarkdownContent(mdContent).Build()
 
 	if nf.GetMarkdownContent() != mdContent {
 		t.Errorf("Expected %v, but got %v", mdContent, nf.GetMarkdownContent())
+	}
+}
+
+func TestNoteFragmentBuilder_SetDateCreated(t *testing.T) {
+	dateCreated := timestamp.Timestamp{ Seconds: time.Now().Unix() }
+	nfb := NoteFragmentBuilder{}
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetDateCreated(&dateCreated).Build()
+
+	if nf.GetDateCreated().Seconds != dateCreated.Seconds {
+		t.Errorf("Expected %v, but got %v", dateCreated, nf.GetTopic())
 	}
 }

@@ -8,7 +8,7 @@ before_install:
 - go get -t -v ./...
 
 script:
-- go test github.com/geekmdio/noted/uuidHelper github.com/geekmdio/noted/logHelper github.com/geekmdio/noted/create -v -race -coverprofile=coverage.txt -covermode=atomic
+- bash unit_test_and_coverage.sh
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
