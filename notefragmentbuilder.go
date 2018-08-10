@@ -21,10 +21,7 @@ type NoteFragmentBuilder struct {
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuilder {
 	nb.noteFragment = &ehrpb.NoteFragment{}
-	nb.noteFragment.VisitGuid = note.VisitGuid
 	nb.noteFragment.NoteGuid = note.NoteGuid
-	nb.noteFragment.AuthorGuid = note.AuthorGuid
-	nb.noteFragment.PatientGuid = note.PatientGuid
 	newUuid, err := uuid.NewUUID()
 	if err != nil {
 		log.Fatalf("Error making UUID: %v", err)
