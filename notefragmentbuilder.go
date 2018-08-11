@@ -4,7 +4,6 @@ import (
 	"github.com/geekmdio/ehrprotorepo/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/google/uuid"
-	"log"
 )
 
 // NoteFragmentBuilder allows for a fluent means of constructing complex objects.
@@ -17,16 +16,16 @@ type NoteFragmentBuilder struct {
 // InitFromNote requires a Note when initializing the fluent build syntax because
 // the purpose of the NoteFragment is to be a child to the note. It initializes
 // visit GUID, note GUID, author GUID, patient GUID from the Note and also generates
-// a GUID for the NoteFragment itself.
+// a GUID for the NoteFragment itself. For the ICD10 codes, we highly recommend
+// leveraging a service like the Watson API for natural language processing, which
+// can be trained to predict ICD10 codes from Descriptions.
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuilder {
-	nb.noteFragment = &ehrpb.NoteFragment{}
-	nb.noteFragment.NoteGuid = note.NoteGuid
-	newUuid, err := uuid.NewUUID()
-	if err != nil {
-		log.Fatalf("Error making UUID: %v", err)
+	nb.noteFragment = &ehrpb.NoteFragment{
+		NoteFragmentGuid:     uuid.New().String(),
+		NoteGuid:             note.NoteGuid,
+		Tags:                 make([]string,0),
 	}
-	nb.noteFragment.NoteFragmentGuid = newUuid.String()
 	return nb
 }
 
@@ -44,13 +43,22 @@ func (nb *NoteFragmentBuilder) SetDateCreated(ts *timestamp.Timestamp) *NoteFrag
 	return nb
 }
 
+// Set the user- and clinician-friendly description of the problem. This should use
+// sufficient wording such that predictive programs, such as the watson API,
+// can return ICD codes with high confidence allowing the structuring of data.
+// RETURNS: *NoteFragmentBuilder
+func (nb *NoteFragmentBuilder) SetDescription(s string) *NoteFragmentBuilder {
+	nb.noteFragment.Description = s
+	return nb
+}
+
 // Set the relevant medical issue for the NoteFragment. Some NoteFragments may not have
 // an associated medical issue because the content of the note will be related to
 // gathering or recording information, rather than formulating a response to a medical issue.
 // Set the issue as NO_MEDICAL_ISSUE in this case. The medical issue can be one of numerous items.
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetIssue(t ehrpb.MedicalIssue) *NoteFragmentBuilder {
-	nb.noteFragment.Issue = t
+func (nb *NoteFragmentBuilder) SetIssueGuid(i string) *NoteFragmentBuilder {
+	nb.noteFragment.IssueGuid = i
 	return nb
 }
 // Set the ICD10 code for the issue. If the fragment is note associated with a medical issue
@@ -58,6 +66,14 @@ func (nb *NoteFragmentBuilder) SetIssue(t ehrpb.MedicalIssue) *NoteFragmentBuild
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) SetIcd10Code(c string) *NoteFragmentBuilder {
 	nb.noteFragment.Icd_10Code = c
+	return nb
+}
+
+// Set the ICD10 long description for the issue. If the fragment is note associated with a medical issue
+// leave blank.
+// RETURNS: *NoteFragmentBuilder
+func (nb *NoteFragmentBuilder) SetIcd10LongDescription(c string) *NoteFragmentBuilder {
+	nb.noteFragment.Icd_10Long = c
 	return nb
 }
 

@@ -38,9 +38,11 @@ type NoteBuilder struct {
 // in the note. This must be called first after instantiation.
 // RETURNS: *NoteBuilder
 func (nb *NoteBuilder) Init() *NoteBuilder {
-	nb.note = &ehrpb.Note{}
-	nb.note.Fragments = []*ehrpb.NoteFragment{}
-	nb.note.NoteGuid = uuid.New().String()
+	nb.note = &ehrpb.Note{
+		NoteGuid:             uuid.New().String(),
+		Fragments:            []*ehrpb.NoteFragment{},
+		Tags:                 make([]string, 0),
+	}
 	return nb
 }
 
