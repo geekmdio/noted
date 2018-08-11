@@ -33,7 +33,7 @@ func TestNoteFragmentBuilder_SetId(t *testing.T) {
 func TestNoteFragmentBuilder_SetIssue(t *testing.T) {
 	issue := ehrpb.MedicalIssue_CHOLECYSTITS
 	nfb := NoteFragmentBuilder{}
-	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssue(issue).Build()
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssueGuid(issue).Build()
 
 	if nf.GetIssue() != issue {
 		t.Errorf("Expected %v, but got %v", issue, nf.GetIssue())
