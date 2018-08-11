@@ -9,6 +9,7 @@ A library for creating and managing clinical notes.
 
 PACKAGE DOCUMENTATION
 
+
 package noted
     import "github.com/geekmdio/noted"
 
