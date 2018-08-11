@@ -72,9 +72,9 @@ func buildAppendNoteFrags(note *ehrpb.Note) {
 	pe := peFragBuilder.SetTopic(ehrpb.FragmentTopic_PHYSICAL_EXAM).Build()
 	asthmaFragBuilder := NoteFragmentBuilder{}
 	asthmaFragBuilder.InitFromNote(note)
-	asthma := asthmaFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ASTHMA).Build()
+	asthma := asthmaFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssueGuid(ehrpb.MedicalIssue_ASTHMA).Build()
 	cadFragBuilder := NoteFragmentBuilder{}
 	cadFragBuilder.InitFromNote(note)
-	cad := cadFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssue(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).Build()
+	cad := cadFragBuilder.SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).SetIssueGuid(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).Build()
 	note.Fragments = append(note.Fragments, vit, all, meds, subjFrag, cad, asthma, mhx, fam, soc, pe)
 }
