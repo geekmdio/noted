@@ -51,6 +51,26 @@ func TestNoteFragmentBuilder_SetIcd10Code(t *testing.T) {
 	}
 }
 
+func TestNoteFragmentBuilder_SetIcd10LongDescription(t *testing.T) {
+	icd10Long := "Diabetes mellitus, type 2"
+	nfb := NoteFragmentBuilder{}
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIcd10LongDescription(icd10Long).Build()
+
+	if nf.GetIcd_10Long() != icd10Long {
+		t.Errorf("Expected %v, but got %v", icd10Long, nf.GetIcd_10Long())
+	}
+}
+
+func TestNoteFragmentBuilder_SetDescription(t *testing.T) {
+	desc := "Diabetes Type 2"
+	nfb := NoteFragmentBuilder{}
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetDescription(desc).Build()
+
+	if nf.GetDescription() != desc {
+		t.Errorf("Expected %v, but got %v", desc, nf.GetDescription())
+	}
+}
+
 func TestNoteFragmentBuilder_SetStatus(t *testing.T) {
 	status := ehrpb.NoteFragmentStatus_REPLACED
 	nfb := NoteFragmentBuilder{}
