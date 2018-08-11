@@ -5,6 +5,7 @@ import (
 	"github.com/geekmdio/ehrprotorepo/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
+	"github.com/google/uuid"
 )
 
 func TestNoteBuilder_Init(t *testing.T) {
@@ -31,12 +32,12 @@ func TestNoteFragmentBuilder_SetId(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetIssue(t *testing.T) {
-	issue := ehrpb.MedicalIssue_CHOLECYSTITS
+	issueGuid := uuid.New().String()
 	nfb := NoteFragmentBuilder{}
-	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssueGuid(issue).Build()
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetIssueGuid(issueGuid).Build()
 
-	if nf.GetIssue() != issue {
-		t.Errorf("Expected %v, but got %v", issue, nf.GetIssue())
+	if nf.GetIssueGuid() != issueGuid {
+		t.Errorf("Expected %v, but got %v", issueGuid, nf.GetIssueGuid())
 	}
 }
 
