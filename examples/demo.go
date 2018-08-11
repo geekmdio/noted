@@ -60,7 +60,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_ASTHMA).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("J45.902").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -71,7 +71,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(1).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_ISCHEMIC_CORONARY_ARTERY_DISEASE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("I25.9").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -82,7 +82,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -93,7 +93,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -104,7 +104,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -115,7 +115,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -126,7 +126,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -137,7 +137,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
@@ -148,7 +148,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		InitFromNote(note).
 		SetId(0).
 		SetDateCreated(&timestamp.Timestamp{}).
-		SetIssue(ehrpb.MedicalIssue_NO_MEDICAL_ISSUE).
+		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
 		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
 		SetPriority(ehrpb.FragmentPriority_HIGH).
