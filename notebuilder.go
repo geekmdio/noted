@@ -48,7 +48,7 @@ func (nb *NoteBuilder) Init() *NoteBuilder {
 
 // Set's the Id for the object.
 // RETURNS: *NoteBuilder
-func (nb *NoteBuilder) SetId(id int32) *NoteBuilder {
+func (nb *NoteBuilder) SetId(id int64) *NoteBuilder {
 	nb.note.Id = id
 	return nb
 }

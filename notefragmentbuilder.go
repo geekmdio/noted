@@ -31,7 +31,7 @@ func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuild
 
 // Set the Id of the note.
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetId(id int32) *NoteFragmentBuilder {
+func (nb *NoteFragmentBuilder) SetId(id int64) *NoteFragmentBuilder {
 	nb.noteFragment.Id = id
 	return nb
 }
@@ -84,7 +84,7 @@ func (nb *NoteFragmentBuilder) SetIcd10LongDescription(c string) *NoteFragmentBu
 // - Active
 // - Replaced (Old notes should be set to replaced, allowing the user to filter)
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetStatus(s ehrpb.NoteFragmentStatus) *NoteFragmentBuilder {
+func (nb *NoteFragmentBuilder) SetStatus(s ehrpb.RecordStatus) *NoteFragmentBuilder {
 	nb.noteFragment.Status = s
 	return nb
 }
@@ -94,7 +94,7 @@ func (nb *NoteFragmentBuilder) SetStatus(s ehrpb.NoteFragmentStatus) *NoteFragme
 // - Normal
 // - Low
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetPriority(p ehrpb.FragmentPriority) *NoteFragmentBuilder {
+func (nb *NoteFragmentBuilder) SetPriority(p ehrpb.RecordPriority) *NoteFragmentBuilder {
 	nb.noteFragment.Priority = p
 	return nb
 }
@@ -111,7 +111,7 @@ func (nb *NoteFragmentBuilder) SetPriority(p ehrpb.FragmentPriority) *NoteFragme
 // - Physical Exam
 // - Medical Problems, sorted by priority along with a plan.
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetTopic(t ehrpb.FragmentTopic) *NoteFragmentBuilder {
+func (nb *NoteFragmentBuilder) SetTopic(t ehrpb.FragmentType) *NoteFragmentBuilder {
 	nb.noteFragment.Topic = t
 	return nb
 }
@@ -121,7 +121,7 @@ func (nb *NoteFragmentBuilder) SetTopic(t ehrpb.FragmentTopic) *NoteFragmentBuil
 // related applications which can easily support formatting through markdown.
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) SetMarkdownContent(c string) *NoteFragmentBuilder {
-	nb.noteFragment.MarkdownContent = c
+	nb.noteFragment.Content = c
 	return nb
 }
 
