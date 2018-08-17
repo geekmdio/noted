@@ -22,7 +22,7 @@ func TestNoteBuilder_Init(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetId(t *testing.T) {
-	var id int32 = 3
+	var id int64 = 3
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetId(id).Build()
 
@@ -72,7 +72,7 @@ func TestNoteFragmentBuilder_SetDescription(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetStatus(t *testing.T) {
-	status := ehrpb.NoteFragmentStatus_REPLACED
+	status := ehrpb.RecordStatus_REPLACED
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetStatus(status).Build()
 
@@ -82,7 +82,7 @@ func TestNoteFragmentBuilder_SetStatus(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetPriority(t *testing.T) {
-	priority := ehrpb.FragmentPriority_HIGH
+	priority := ehrpb.RecordPriority_HIGH
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetPriority(priority).Build()
 
@@ -92,7 +92,7 @@ func TestNoteFragmentBuilder_SetPriority(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetTopic(t *testing.T) {
-	topic := ehrpb.FragmentTopic_ALLERGIES
+	topic := ehrpb.FragmentType_ALLERGIES
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetTopic(topic).Build()
 
@@ -106,8 +106,8 @@ func TestNoteFragmentBuilder_SetMarkdownContent(t *testing.T) {
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetMarkdownContent(mdContent).Build()
 
-	if nf.GetMarkdownContent() != mdContent {
-		t.Errorf("Expected %v, but got %v", mdContent, nf.GetMarkdownContent())
+	if nf.GetContent() != mdContent {
+		t.Errorf("Expected %v, but got %v", mdContent, nf.GetContent())
 	}
 }
 
