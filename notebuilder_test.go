@@ -30,7 +30,7 @@ func TestNoteBuilderInitCreatesNewNoteFragmentSliceWithZeroLength(t *testing.T) 
 
 func TestNoteBuilderSetIdSetsProperFieldAndReturnsProperValue(t *testing.T) {
 	b := NoteBuilder{}
-	var id int32 = 43
+	var id int64 = 43
 	note := b.Init().SetId(id).Build()
 
 	if note.GetId() != id {
