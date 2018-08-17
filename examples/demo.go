@@ -62,9 +62,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("J45.902").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_MEDICAL_PROBLEM).
 		SetMarkdownContent("Asthma: ...").
 		Build()
 	cadFrag := fragBuilder.
@@ -73,9 +73,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("I25.9").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_MEDICAL_PROBLEM).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_MEDICAL_PROBLEM).
 		SetMarkdownContent("Coronary arterial disease: ...").
 		Build()
 	subjectiveFrag := fragBuilder.
@@ -84,9 +84,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_SUBJECTIVE).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_SUBJECTIVE).
 		SetMarkdownContent("The reason for the visit today is...").
 		Build()
 	allergiesFrag := fragBuilder.
@@ -95,9 +95,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_ALLERGIES).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_ALLERGIES).
 		SetMarkdownContent("Penicillin -> Rash").
 		Build()
 	vitalsFrag := fragBuilder.
@@ -106,9 +106,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_VITALS).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_VITALS).
 		SetMarkdownContent("120/83 mmHg").
 		Build()
 	socialFrag := fragBuilder.
@@ -117,9 +117,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_SOCIAL_HISTORY).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_SOCIAL_HISTORY).
 		SetMarkdownContent("Smokes, drinks, does drugs...").
 		Build()
 	familyFrag := fragBuilder.
@@ -128,9 +128,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_FAMILY_HISTORY).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_FAMILY_HISTORY).
 		SetMarkdownContent("Dad had 4V CABG at age 43").
 		Build()
 	medsFrag := fragBuilder.
@@ -139,9 +139,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_MEDICATIONS).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_MEDICATIONS).
 		SetMarkdownContent("Amphetamine salts").
 		Build()
 	peFrag := fragBuilder.
@@ -150,9 +150,9 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetDateCreated(&timestamp.Timestamp{}).
 		SetIssueGuid(uuid.New().String()).
 		SetIcd10Code("").
-		SetStatus(ehrpb.NoteFragmentStatus_INCOMPLETE).
-		SetPriority(ehrpb.FragmentPriority_HIGH).
-		SetTopic(ehrpb.FragmentTopic_PHYSICAL_EXAM).
+		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
+		SetPriority(ehrpb.RecordPriority_HIGH).
+		SetTopic(ehrpb.FragmentType_PHYSICAL_EXAM).
 		SetMarkdownContent("Normal exam").
 		Build()
 	note.Fragments = append(note.Fragments, asthmaFrag, cadFrag, subjectiveFrag, allergiesFrag, vitalsFrag, socialFrag, familyFrag, medsFrag, peFrag)
