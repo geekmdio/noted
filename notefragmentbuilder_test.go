@@ -104,7 +104,7 @@ func TestNoteFragmentBuilder_SetTopic(t *testing.T) {
 func TestNoteFragmentBuilder_SetMarkdownContent(t *testing.T) {
 	mdContent := "# Heading1"
 	nfb := NoteFragmentBuilder{}
-	nf := nfb.InitFromNote(&ehrpb.Note{}).SetMarkdownContent(mdContent).Build()
+	nf := nfb.InitFromNote(&ehrpb.Note{}).SetContent(mdContent).Build()
 
 	if nf.GetContent() != mdContent {
 		t.Errorf("Expected %v, but got %v", mdContent, nf.GetContent())

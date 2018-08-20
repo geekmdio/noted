@@ -117,11 +117,11 @@ func (nb *NoteFragmentBuilder) SetTopic(t ehrpb.FragmentType) *NoteFragmentBuild
 	return nb
 }
 
-// The SetMarkdownContent field can support plain text, of course, but
+// The SetContent field can support plain text, of course, but
 // the intent is ultimately that this will be serving web applications or
 // related applications which can easily support formatting through markdown.
 // RETURNS: *NoteFragmentBuilder
-func (nb *NoteFragmentBuilder) SetMarkdownContent(c string) *NoteFragmentBuilder {
+func (nb *NoteFragmentBuilder) SetContent(c string) *NoteFragmentBuilder {
 	nb.noteFragment.Content = c
 	return nb
 }

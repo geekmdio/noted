@@ -66,7 +66,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_MEDICAL_PROBLEM).
-		SetMarkdownContent("Asthma: ...").
+		SetContent("Asthma: ...").
 		Build()
 	cadFrag := fragBuilder.
 		InitFromNote(note).
@@ -77,7 +77,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_MEDICAL_PROBLEM).
-		SetMarkdownContent("Coronary arterial disease: ...").
+		SetContent("Coronary arterial disease: ...").
 		Build()
 	subjectiveFrag := fragBuilder.
 		InitFromNote(note).
@@ -88,7 +88,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_SUBJECTIVE).
-		SetMarkdownContent("The reason for the visit today is...").
+		SetContent("The reason for the visit today is...").
 		Build()
 	allergiesFrag := fragBuilder.
 		InitFromNote(note).
@@ -99,7 +99,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_ALLERGIES).
-		SetMarkdownContent("Penicillin -> Rash").
+		SetContent("Penicillin -> Rash").
 		Build()
 	vitalsFrag := fragBuilder.
 		InitFromNote(note).
@@ -110,7 +110,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_VITALS).
-		SetMarkdownContent("120/83 mmHg").
+		SetContent("120/83 mmHg").
 		Build()
 	socialFrag := fragBuilder.
 		InitFromNote(note).
@@ -121,7 +121,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_SOCIAL_HISTORY).
-		SetMarkdownContent("Smokes, drinks, does drugs...").
+		SetContent("Smokes, drinks, does drugs...").
 		Build()
 	familyFrag := fragBuilder.
 		InitFromNote(note).
@@ -132,7 +132,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_FAMILY_HISTORY).
-		SetMarkdownContent("Dad had 4V CABG at age 43").
+		SetContent("Dad had 4V CABG at age 43").
 		Build()
 	medsFrag := fragBuilder.
 		InitFromNote(note).
@@ -143,7 +143,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_MEDICATIONS).
-		SetMarkdownContent("Amphetamine salts").
+		SetContent("Amphetamine salts").
 		Build()
 	peFrag := fragBuilder.
 		InitFromNote(note).
@@ -154,7 +154,7 @@ func buildNoteFragments(note *ehrpb.Note) {
 		SetStatus(ehrpb.RecordStatus_INCOMPLETE).
 		SetPriority(ehrpb.RecordPriority_HIGH).
 		SetTopic(ehrpb.FragmentType_PHYSICAL_EXAM).
-		SetMarkdownContent("Normal exam").
+		SetContent("Normal exam").
 		Build()
 	note.Fragments = append(note.Fragments, asthmaFrag, cadFrag, subjectiveFrag, allergiesFrag, vitalsFrag, socialFrag, familyFrag, medsFrag, peFrag)
 }
