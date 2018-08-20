@@ -17,10 +17,10 @@
 package noted
 
 import (
-	"github.com/geekmdio/ehrprotorepo/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/google/uuid"
-	)
+	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
+)
 
 
 // NoteBuilder allows for a fluent means of constructing complex objects.

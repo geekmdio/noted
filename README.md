@@ -1,4 +1,4 @@
-# GeekMD:Noted v0.3.0
+# GeekMD:Noted v0.4.0
 A library for creating and managing clinical notes.
 
 |Branch|Build Status|Coverage %|
@@ -10,6 +10,9 @@ A library for creating and managing clinical notes.
 PACKAGE DOCUMENTATION
 
 Run `godoc` in your terminal or command prompt for documentation.
+
+RELEASE INFORMATION v0.4.0
+- Updated to newest EHRProto version.
 
 RELEASE INFORMATION v0.3.0
 - Updated to newest EHRProto version and adjusted types to accomodate. See [repo](https://github.com/geekmdio/ehrprotorepo) for details.

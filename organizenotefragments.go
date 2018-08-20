@@ -2,7 +2,7 @@ package noted
 
 import (
 	"sort"
-	"github.com/geekmdio/ehrprotorepo/goproto"
+	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 )
 
 type noteFormatterError struct {

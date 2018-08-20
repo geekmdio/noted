@@ -2,10 +2,10 @@ package noted
 
 import (
 	"testing"
-	"github.com/geekmdio/ehrprotorepo/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"time"
 	"github.com/google/uuid"
+	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 )
 
 func TestNoteBuilder_Init(t *testing.T) {
