@@ -1,11 +1,11 @@
 package noted
 
 import (
-	"testing"
-	"github.com/golang/protobuf/ptypes/timestamp"
-	"time"
-	"github.com/google/uuid"
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
+	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/google/uuid"
+	"testing"
+	"time"
 )
 
 func TestNoteBuilder_Init(t *testing.T) {
@@ -112,7 +112,7 @@ func TestNoteFragmentBuilder_SetMarkdownContent(t *testing.T) {
 }
 
 func TestNoteFragmentBuilder_SetDateCreated(t *testing.T) {
-	dateCreated := timestamp.Timestamp{ Seconds: time.Now().Unix() }
+	dateCreated := timestamp.Timestamp{Seconds: time.Now().Unix()}
 	nfb := NoteFragmentBuilder{}
 	nf := nfb.InitFromNote(&ehrpb.Note{}).SetDateCreated(&dateCreated).Build()
 

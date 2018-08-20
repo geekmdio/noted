@@ -1,11 +1,11 @@
 package noted
 
 import (
-	"testing"
-	"github.com/google/uuid"
-	"github.com/golang/protobuf/ptypes/timestamp"
-	"time"
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
+	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/google/uuid"
+	"testing"
+	"time"
 )
 
 func TestNoteBuilderInitSetsNewGuid(t *testing.T) {
@@ -40,7 +40,7 @@ func TestNoteBuilderSetIdSetsProperFieldAndReturnsProperValue(t *testing.T) {
 
 func TestSetDateCreatedSetsTimeStampAndReturnsProperValue(t *testing.T) {
 	b := NoteBuilder{}
-	now := timestamp.Timestamp{Seconds:time.Now().Unix()}
+	now := timestamp.Timestamp{Seconds: time.Now().Unix()}
 	note := b.Init().SetDateCreated(&now).Build()
 
 	// Test made in Aug 2018, therefore the value for seconds since UNIX epoch

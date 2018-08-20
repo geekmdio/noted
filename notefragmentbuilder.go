@@ -1,9 +1,9 @@
 package noted
 
 import (
+	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/google/uuid"
-	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 )
 
 // NoteFragmentBuilder allows for a fluent means of constructing complex objects.
@@ -22,9 +22,9 @@ type NoteFragmentBuilder struct {
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuilder {
 	nb.noteFragment = &ehrpb.NoteFragment{
-		NoteFragmentGuid:     uuid.New().String(),
-		NoteGuid:             note.NoteGuid,
-		Tags:                 make([]string,0),
+		NoteFragmentGuid: uuid.New().String(),
+		NoteGuid:         note.NoteGuid,
+		Tags:             make([]string, 0),
 	}
 	return nb
 }
@@ -61,6 +61,7 @@ func (nb *NoteFragmentBuilder) SetIssueGuid(i string) *NoteFragmentBuilder {
 	nb.noteFragment.IssueGuid = i
 	return nb
 }
+
 // Set the ICD10 code for the issue. If the fragment is note associated with a medical issue
 // leave blank.
 // RETURNS: *NoteFragmentBuilder

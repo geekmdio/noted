@@ -1,9 +1,9 @@
 package noted
 
 import (
-	"testing"
-	"github.com/google/uuid"
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
+	"github.com/google/uuid"
+	"testing"
 )
 
 func TestOrganizeNoteFragments(t *testing.T) {
@@ -32,7 +32,7 @@ func TestOrganizeNoteFragmentsError_Error(t *testing.T) {
 		t.Errorf("An error should have been thrown!")
 	}
 
-	nfe := noteFormatterError{ Message: "Test"}
+	nfe := noteFormatterError{Message: "Test"}
 	_, ok := error(nfe).(error)
 	if !ok {
 		t.Errorf("Should have type asserted to error interface")
@@ -43,8 +43,6 @@ func TestOrganizeNoteFragmentsError_Error(t *testing.T) {
 	}
 
 }
-
-
 
 func buildAppendNoteFrags(note *ehrpb.Note) {
 	subjFragBuilder := NoteFragmentBuilder{}

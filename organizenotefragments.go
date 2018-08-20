@@ -1,8 +1,8 @@
 package noted
 
 import (
-	"sort"
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
+	"sort"
 )
 
 type noteFormatterError struct {
@@ -31,7 +31,7 @@ func (n noteFormatterError) Error() string {
 func OrganizeNoteFragments(n *ehrpb.Note) error {
 
 	if len(n.Fragments) <= 0 {
-		return noteFormatterError{ Message: "The note does not have any fragments to sort."}
+		return noteFormatterError{Message: "The note does not have any fragments to sort."}
 	}
 
 	newFragments := generateNewFragmentsProperlyOrdered(n)
