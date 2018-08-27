@@ -19,7 +19,6 @@ package noted
 import (
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/google/uuid"
 )
 
 // NoteBuilder allows for a fluent means of constructing complex objects.
@@ -37,11 +36,7 @@ type NoteBuilder struct {
 // in the note. This must be called first after instantiation.
 // RETURNS: *NoteBuilder
 func (nb *NoteBuilder) Init() *NoteBuilder {
-	nb.note = &ehrpb.Note{
-		NoteGuid:  uuid.New().String(),
-		Fragments: []*ehrpb.NoteFragment{},
-		Tags:      make([]string, 0),
-	}
+	nb.note = NewNote()
 	return nb
 }
 
