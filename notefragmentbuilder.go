@@ -3,7 +3,6 @@ package noted
 import (
 	"github.com/geekmdio/ehrprotorepo/v1/generated/goproto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/google/uuid"
 )
 
 // NoteFragmentBuilder allows for a fluent means of constructing complex objects.
@@ -21,11 +20,8 @@ type NoteFragmentBuilder struct {
 // can be trained to predict ICD10 codes from Descriptions.
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuilder {
-	nb.noteFragment = &ehrpb.NoteFragment{
-		NoteFragmentGuid: uuid.New().String(),
-		NoteGuid:         note.NoteGuid,
-		Tags:             make([]string, 0),
-	}
+	nb.noteFragment = NewNoteFragment()
+	nb.noteFragment.NoteGuid = note.GetNoteGuid()
 	return nb
 }
 
