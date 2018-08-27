@@ -21,6 +21,7 @@ type NoteFragmentBuilder struct {
 // RETURNS: *NoteFragmentBuilder
 func (nb *NoteFragmentBuilder) InitFromNote(note *ehrpb.Note) *NoteFragmentBuilder {
 	nb.noteFragment = NewNoteFragment()
+	nb.noteFragment.NoteGuid = note.GetNoteGuid()
 	return nb
 }
 
